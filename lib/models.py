@@ -28,4 +28,14 @@ class Technique(models.Model):
     published_date = models.DateTimeField(blank=True)
     craft = models.ImageField(upload_to="craft")
     group = models.ForeignKey('LibGroup')
+
+    def __str__(self):
+        self.save()
+
+    def publish(self):
+        self.save()
+
+    def get_absolute_url(self):
+        return reverse('lib.views.craft_detail', args=[str(self.id)])
+
     
