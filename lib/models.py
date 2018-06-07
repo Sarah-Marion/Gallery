@@ -19,3 +19,13 @@ class LibGroup(models.Model):
 
     def get_absolute_url(self):
         return reverse('lib.views.lib_detail', args=[str(self.id)])
+
+
+
+class Technique(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.TextField()
+    published_date = models.DateTimeField(blank=True)
+    craft = models.ImageField(upload_to="craft")
+    group = models.ForeignKey('LibGroup')
+    
