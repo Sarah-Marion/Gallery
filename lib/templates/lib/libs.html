@@ -42,7 +42,10 @@
             {% for libGroup in libGroups %}
                 <div class="col-md-6 libOptions">
                     <h2> {{ libGroup.title }} </h2>
-                    
+                    <p> {{ libGroup.description | linebreaks }} </p>
+                    <p>
+                        <a href="{% url 'lib_detail' lib_title_slug=libGroup.slug %}" class="btn btn-lg btn-primary btn-custom"> View {{ libGroup.title }} Library &raquo; </a>
+                    </p>
                 </div>
             {% endfor %}
         </div>
