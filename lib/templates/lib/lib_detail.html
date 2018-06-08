@@ -1,0 +1,36 @@
+{% extends 'lib/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        {% if techniques %}
+            <div class="row">
+                <div class="col-md-10">
+                    <h1> {{ libGroups.title }} Library </h1>
+                    <p> {{ libGroups.description | linebreaks }} </p>
+                    <p>Click an image to view more details.</p>
+                </div>
+            </div>
+
+            <div class="row" id="techniques">
+                {% for technique in techniques %}
+                <div class="col-lg-4 col-md-6 col-xs-12 thumb image-box">
+                    <a href="{% url 'craft' craft_id=technique.id %}" class="thumbnail">
+                        <img src="{{ technique.craft.url}}" class="img-responsive" alt="{{ technique.title}}">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% else %}
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Ooops!</h1>
+                    <p>No libararies with that name were found</p>
+                </div>
+            </div>
+
+        {% endif%}
+    </div>
+
+{% endblock content %}
