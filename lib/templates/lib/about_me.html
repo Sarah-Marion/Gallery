@@ -1,0 +1,22 @@
+{% extends 'lib/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/me.jpg' %}"class="img-circle myface" alt="me">
+            </div>
+            <div class="col-md-8">
+                <h2>About Me</h2>
+                <p>Lorem ipsum dolor sit amet, vim zril honestatis ei, unum nulla laoreet cu est. Mea eu nusquam delicata. Ne dolores ponderum eos. Nominati aliquando reprimique id mel.
+                    I built this website from scratch using Python and Django as well as Bootstrap and HTML/CSS. Pretty impressive, right? 
+                        The source code is available on <a href=https://github.com/sarah-marion/Gallery >Github.</a></p>
+                
+                <p>You can contact me by <a href="devsarahmarion@gmail.com">email</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

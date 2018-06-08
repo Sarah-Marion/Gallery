@@ -1,0 +1,28 @@
+{% extends 'lib/base.html'%}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="{{ technique.craft.url }}" class="img-responsive center-block" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 center">
+                <h1> {{ technique.title }} - {{ technique.published_date.year }} </h1>
+                <p> {{ technique.description | linebreak }} </p>
+                <p> {% if previous %} 
+                    <a href="{% url 'craft' craft_id=previous.id %}" class="btn btn-lg btn-info btn-custom">Previous</a>
+                    {% endif %}
+
+                    {%if next %}
+                    <a href="{% url 'craft' craft_id=next.id %}" class="btn btn-lg btn-info btn-custom-pull-right">Next</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
