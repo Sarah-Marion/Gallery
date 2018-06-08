@@ -41,3 +41,7 @@ def craft_detail(request, craft_id):
         previous = None
 
     return render(request, 'lib/craft_detail.html', {'technique':technique, 'next':next_technique, 'previous':previous})
+
+
+def about_me(request):
+    return render(request, 'lib/about_me.html')
