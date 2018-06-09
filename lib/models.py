@@ -38,11 +38,41 @@ class Technique(models.Model):
     def get_absolute_url(self):
         return reverse('lib.views.craft_detail', args=[str(self.id)])
 
+
+class Location(models.Model):
+    location_name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.location_name
+
+    def __str__(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
     
-class Image(models.Model):
-    image_name = models.CharField(max_length=100)
-    image_link = models.CharField(upload_to='gallery/')
-    image_description = models.TextField()
-    image_location = models.ForeignKey('Location', null=True)
-    image_category = models.ForeignKey('Category', null=True)
-    image_time_created = models.DateTimeField(auto_now_add=True)
+    @classmethod
+    def update_location(cls, id, new_location):
+        cls.objects.filter(id=id).update(location_name=new_location)
+
+
+# class Image(models.Model):
+#     image_name = models.CharField(max_length=100)
+#     image_link = models.CharField()
+#     image_description = models.TextField()
+#     image_location = models.ForeignKey('Location', null=True)
+#     image_category = models.ForeignKey('Category', null=True)
+#     image_time_created = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.image_description
+
+#     class Meta:
+#         ordering=['image_name']
+
+#     def save_image(self):
+#         self.save()
+
+#     def delete_image(self):
+#         self.delete()
