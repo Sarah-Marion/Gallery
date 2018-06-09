@@ -39,3 +39,10 @@ class Technique(models.Model):
         return reverse('lib.views.craft_detail', args=[str(self.id)])
 
     
+class Image(models.Model):
+    image_name = models.CharField(max_length=100)
+    image_link = models.CharField(upload_to='gallery/')
+    image_description = models.TextField()
+    image_location = models.ForeignKey('Location', null=True)
+    image_category = models.ForeignKey('Category', null=True)
+    image_time_created = models.DateTimeField(auto_now_add=True)
