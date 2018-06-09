@@ -1,5 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import LibGroup, Technique
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import LibGroup, Technique, Location
 
 
 # Create your views here.
@@ -45,3 +48,12 @@ def craft_detail(request, craft_id):
 
 def about_me(request):
     return render(request, 'lib/about_me.html')
+
+def image_by_location(request):
+    if request.method == "GET" and 'location_name' in request.GET and request.is_ajax():
+        location = request.GET['location_name']
+        images_location = Image.get_image_by_location(location)
+
+        return render_to_response('lib/location.html', {'images_location':images_location})
+
+    return redirect(all_images)

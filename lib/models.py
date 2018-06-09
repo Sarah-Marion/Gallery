@@ -45,7 +45,7 @@ class Location(models.Model):
     def __str__(self):
         return self.location_name
 
-    def __str__(self):
+    def save_location(self):
         self.save()
 
     def delete_location(self):
@@ -56,6 +56,23 @@ class Location(models.Model):
     def update_location(cls, id, new_location):
         cls.objects.filter(id=id).update(location_name=new_location)
 
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.category_name
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    
+    @classmethod
+    def update_category(cls, id, new_category):
+        cls.onjects.filter(id=id).update(category_name=new_category)
 
 # class Image(models.Model):
 #     image_name = models.CharField(max_length=100)

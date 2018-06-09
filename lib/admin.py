@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LibGroup, Technique, Location
+from .models import LibGroup, Technique, Location , Category
 
 
 # Register your models here.
@@ -7,3 +7,4 @@ from .models import LibGroup, Technique, Location
 admin.site.register(LibGroup)
 admin.site.register(Technique)
 admin.site.register(Location)
+admin.site.register(Category)
