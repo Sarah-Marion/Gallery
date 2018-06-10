@@ -1,4 +1,6 @@
-{% load staticfiles %}
+<!-- {% load staticfiles %} -->
+{% load bootstrap3 %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +56,60 @@
             </div>
         </nav>
 
+        <header>
+            <div class="overlay">
+              <!-- <a href='{% url 'home' %}'>
+                <h1>Photo Gallery</h1>
+              </a> -->
+              <div class='h3' id="wrap">
+                <form role="search" class="form-inline form-search" action="{% url 'searchPhoto' %}">
+                  <div class="form-group mb-2">
+                    <input id='search' type="text" class="form-control" placeholder="search image by category" name="image-search">
+      
+                    <button class="btn btn-default mb-2" type="submit">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
       {% block content %}
       {% endblock %}
 
+      
+          
+            <div class="col-sm-12 col-md-12 navbar-right">
+              <select id='myLocation'>
+                <option selected="selected" disabled="disabled">PICK A LOCATION TO VIEW IMAGES:</option>
+                {% for location1 in location %}
+                  <option value="/location/{{location1.location_name}}">{{location1.location_name}}</option>
+                    <!-- <a href="/location/{{location1.location_name}}">{{location1.location_name}}</a> -->
+                  {% empty %}
+                  <div class="row">
+                      <h2 class="text-center"> There is No such Location </h2>
+                  </div>
+
+                {% endfor %}
+              </select>
+            </div>
+          
+        </div>
+      </header>
+      
+      <div class="scroll-category">
+        {% for category in categories %}
+          <button class="btn btn-lg btn-primary category-button">{{ category.category_name }}</button>
+
+          {% empty %}
+          <div class="row">
+              <h2 class="text-center"> There are no such categories </h2>
+          </div>
+
+        {% endfor %}
+      </div>
+    
+
+    
       <!-- FOOTER -->
       <div class="container">
         <div class="row">
