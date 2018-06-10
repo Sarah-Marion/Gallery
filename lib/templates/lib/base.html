@@ -56,27 +56,25 @@
             </div>
         </nav>
 
-        <header>
-            <div class="overlay">
-              <!-- <a href='{% url 'home' %}'>
-                <h1>Photo Gallery</h1>
-              </a> -->
-              <div class='h3' id="wrap">
-                <form role="search" class="form-inline form-search" action="{% url 'searchPhoto' %}">
-                  <div class="form-group mb-2">
-                    <input id='search' type="text" class="form-control" placeholder="search image by category" name="image-search">
-      
-                    <button class="btn btn-default mb-2" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                  </div>
-                </form>
-              </div>
-              
       {% block content %}
       {% endblock %}
 
-      
+      <header>
+        <div class="overlay">
+          <!-- <a href='{% url 'home' %}'>
+            <h1>Photo Gallery</h1>
+          </a> -->
+          <div class='h3' id="wrap">
+            <form role="search" class="form-inline form-search" action="{% url 'searchPhoto' %}">
+              <div class="form-group mb-2">
+                <input id='search' type="text" class="form-control" placeholder="search image by category" name="image-search">
+  
+                <button class="btn btn-default mb-2" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
           
             <div class="col-sm-12 col-md-12 navbar-right">
               <select id='myLocation'>
