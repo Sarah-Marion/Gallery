@@ -72,7 +72,7 @@ class Category(models.Model):
     
     @classmethod
     def update_category(cls, id, new_category):
-        cls.onjects.filter(id=id).update(category_name=new_category)
+        cls.objects.filter(id=id).update(category_name=new_category)
 
 class Image(models.Model):
     image_name = models.CharField(max_length=100)
