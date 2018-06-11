@@ -8,7 +8,7 @@ class LocationTestClass(TestCase):
         self.assertTrue(isinstance(self.location,Location))
 
     def setUp(self):
-        self.location = Location(location_name='Taj-Mahal')
+        self.location = Location(location_name='US')
         self.location.save()
    
     def test_save_location(self):
@@ -55,8 +55,8 @@ class CategoryTestClass(TestCase):
     def test_update_category(self):
         new_category_name = 'Heroes'
         self.category.update_category(self.category.id,new_category_name)
-        changed_category = Category.objects.filter(category_name='Heroes')
-        self.assertTrue(len(changed_category)>0)
+        changed_category = Category.objects.filter(category_name='7 Wonders')
+        self.assertFalse(len(changed_category)>0)
 
     def test_delete_category(self):
         self.category.delete_category()
@@ -73,52 +73,52 @@ class ImageTestClass(TestCase):
         self.category = Category(category_name='7 Wonders')
         self.category.save()
 
-        # self.image_test = Image(image_link='blotch/test.png',image_description='this is a test instance',image_location=self.location,image_category=self.category)
-        # self.image_test.save_image()
+        self.image_test = Image(image_link='lib/1.jpeg',image_description='testing instance',image_location=self.location,image_category=self.category)
+        self.image_test.save_image()
 
-        # self.image_test1 = Image(image_link='blotch/test.png',image_description='this is a test instance',image_location=self.location,image_category=self.category)
-        # self.image_test1.save_image()
+        self.image_test1 = Image(image_link='lib/1.jpeg',image_description='testing instance',image_location=self.location,image_category=self.category)
+        self.image_test1.save_image()
 
-    # def test_instance(self):
-    #     self.assertTrue(isinstance(self.image_test,Image))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image_test,Image))
 
-    # def tearDown(self):
-    #     Image.objects.all().delete()
-    #     Location.objects.all().delete()
-    #     Category.objects.all().delete()
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
 
-    # def test_save_image(self):
-    #     self.image_test.save_image()
-    #     images = Image.objects.all()
-    #     self.assertTrue(len(images)>0)
+    def test_save_image(self):
+        self.image_test.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images)>0)
 
-    # def test_delete_image(self):
-    #     self.image_test.save_image()
-    #     self.image_test.delete_image()
-    #     self.image_test1.delete_image()
-    #     images  = Image.objects.all()
-    #     self.assertTrue(len(images)==0)
+    def test_delete_image(self):
+        self.image_test.save_image()
+        self.image_test.delete_image()
+        self.image_test1.delete_image()
+        images  = Image.objects.all()
+        self.assertTrue(len(images)==0)
 
-    # def test_update_image(self):
-    #     self.image_test.save_image()
-    #     self.image_test.update_image(self.image_test.id,'blotch/test_one.jpg')
-    #     changed_img = Image.objects.filter(image_link='blotch/test_one.jpg')
-    #     self.assertTrue(len(changed_img)>0)
+    def test_update_image(self):
+        self.image_test.save_image()
+        self.image_test.update_image(self.image_test.id,'lib/test_one.jpg')
+        changed_img = Image.objects.filter(image_link='lib/test_one.jpg')
+        self.assertTrue(len(changed_img)>0)
 
-    # def test_get_image_by_id(self):
-    #     found_img = self.image_test.get_image_by_id(self.image_test.id)
-    #     img = Image.objects.filter(id=self.image_test.id)
-    #     self.assertTrue(found_img,img)
+    def test_get_image_by_id(self):
+        found_img = self.image_test.get_image_by_id(self.image_test.id)
+        img = Image.objects.filter(id=self.image_test.id)
+        self.assertTrue(found_img,img)
 
-    # def test_search_image_by_category(self):
-    #     category = 'Travel'
-    #     found_img = self.image_test.get_image_by_cat(category)
-    #     self.assertTrue(len(found_img)>1)
+    def test_search_image_by_category(self):
+        category = 'Heroes'
+        found_img = self.image_test.get_image_by_category(category)
+        self.assertFalse(len(found_img)>1)
 
-    # def test_search_image_by_location(self):
-    #     location = 'Malindi'
-    #     found_img = self.image_test.get_image_by_location(location)
-    #     self.assertTrue(len(found_img)>1)
+    def test_search_image_by_location(self):
+        location = 'Greece'
+        found_img = self.image_test.get_image_by_location(location)
+        self.assertFalse(len(found_img)>1)
 
     def tearDown(self):
         Image.objects.all().delete()
