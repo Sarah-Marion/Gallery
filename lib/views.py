@@ -72,12 +72,12 @@ def image_by_location(request, location):
     # return redirect(all_images)
 
 
-def image_by_category(request):
+def image_by_category(request, category):
     # if request.method == "GET" and 'category_name' in request.GET and request.is_ajax():
     #     category = request.GET['category_name']
-    images_category1 = Image.get_image_by_category1(category)
+    images_category = Image.get_image_by_category(category)
 
-    return render_to_response('lib/category.html',{'images_category1':images_category1})
+    return render_to_response('lib/category.html',{'images_category':images_category})
 
     # return redirect(all_images)
 
