@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^craft/(?P<craft_id>[0-9]+)/$', views.craft_detail, name='craft'),
     url(r'^about/$', views.about_me, name='aboutMe'),
     url(r'^location/(?P<location>\w+)/',views.image_by_location,name='locationPhoto'),
-    url(r'^category/',views.image_by_category,name='categoryPhoto'),
+    url(r'^category/(?P<category>\w+)/',views.image_by_category,name='categoryPhoto'),
     url(r'^image/(?P<image_id>\d+)/$',views.display_details,name='photoDetails'),
     url(r'^search/',views.search_image,name='searchPhoto'),
 ]
