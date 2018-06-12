@@ -77,27 +77,27 @@
           </div>
           
             <div class="col-sm-12 col-md-12 navbar-right">
-              <select id='myLocation'>
-                <option selected="selected" disabled="disabled">PICK A LOCATION TO VIEW IMAGES:</option>
+              <!-- <select id='myLocation'> -->
+                <!-- <option selected="selected" disabled="disabled">PICK A LOCATION TO VIEW IMAGES:</option> -->
                 {% for location1 in location %}
-                  <option value="/location/{{location1.location_name}}">{{location1.location_name}}</option>
-                    <!-- <a href="/location/{{location1.location_name}}">{{location1.location_name}}</a> -->
+                  <!-- <option value="/location/{{location1.location_name}}">{{location1.location_name}}</option> -->
+                    <a href="/location/{{location1.location_name}}" class="btn btn-lg btn-secondary location-button ">{{location1.location_name}}</a>
                   {% empty %}
                   <div class="row">
                       <h2 class="text-center"> There is No such Location </h2>
                   </div>
 
                 {% endfor %}
-              </select>
+              <!-- </select> -->
             </div>
           
         </div>
       </header>
-      
+      {% if categories %}
       <div class="scroll-category">
         {% for category in categories %}
-          <button class="btn btn-lg btn-primary category-button">{{ category.category_name }}</button>
-
+          <!-- <button class="btn btn-lg btn-primary category-button">{{ category.category_name }}</button> -->
+          <a href="/category/{{ category.category_name }}" class="btn btn-lg btn-primary category-button">{{ category.category_name }}</a>
           {% empty %}
           <div class="row">
               <h2 class="text-center"> There are no such categories </h2>
@@ -105,8 +105,18 @@
 
         {% endfor %}
       </div>
-    
+      {% endif %}
+        <!-- {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        {% endblock %}
 
+        {% block scripts %}
+
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
+        {% bootstrap_javascript %}
+        {% endblock %} -->
     
       <!-- FOOTER -->
       <div class="container">
