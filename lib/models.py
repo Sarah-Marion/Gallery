@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 
@@ -26,7 +27,8 @@ class Technique(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     published_date = models.DateTimeField(blank=True)
-    craft = models.ImageField(upload_to="craft")
+    # craft = ImageField(blank=True, manual_crop="800x800")
+    craft_upload = ImageField(blank=True, manual_crop="800x800")
     group = models.ForeignKey('LibGroup')
 
     def __str__(self):
@@ -76,7 +78,8 @@ class Category(models.Model):
 
 class Image(models.Model):
     image_name = models.CharField(max_length=100)
-    image_link = models.ImageField(upload_to='gallery/')
+    # image_link = ImageField(blank=True, manual_crop="800x800")
+    image_upload = ImageField(blank=True, manual_crop="800x800")
     image_description = models.TextField()
     image_location = models.ForeignKey(Location, null=True)
     image_category = models.ForeignKey(Category, null=True)
