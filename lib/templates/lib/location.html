@@ -7,12 +7,12 @@
   <li class="col-md-4 col-sm-6 col-xs-12 col-lg-3">
     <div class="img-Img">
 
-      <img src="{{ image.image_link.url }}" class="img-responsive myImg" alt="{{image.image_name}}">
+      <img src="{{ image.image_upload.cdn_url }}" class="img-responsive myImg" alt="{{image.image_name}}">
 
       <a id="see-me" href="{% url 'photoDetails' image_id=image.id %}">see me
         <span class="glyphicon glyphicon-eye-open"></span></a>
 
-      <button id='btn-copy' data-info="{{request.get_host }}{{ image.image_link.url}}" type="button" class="btn btn-info btn-xs">
+      <button id='btn-copy' data-info="{{request.get_host }}{{ image.image_upload.cdn_url}}" type="button" class="btn btn-info btn-xs">
         <span class="popuptext" id="myPopup">Copied!</span>
         <span class="glyphicon glyphicon-copy"></span>
         copy link
@@ -57,10 +57,6 @@
     </div>
 
   </li>
-  <!-- {% empty %}
-  <div class="alert alert-danger">
-    <h2>Ooopps!No images from that location were found</h2>
-  </div> -->
 {% endfor %}
 
 {% endblock %}

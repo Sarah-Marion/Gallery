@@ -16,7 +16,7 @@
                 {% for technique in techniques %}
                 <div class="col-lg-4 col-md-6 col-xs-12 thumb image-box">
                     <a href="{% url 'craft' craft_id=technique.id %}" class="thumbnail">
-                        <img src="{{ technique.craft.url}}" class="img-responsive" alt="{{ technique.title}}">
+                        <img src="{{ technique.craft_upload.cdn_url}}" class="img-responsive" alt="{{ technique.title}}">
                     </a>
                 </div>
                 {% endfor %}

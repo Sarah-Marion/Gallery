@@ -31,6 +31,8 @@ def lib_detail(request, lib_title_slug):
 
 
 def craft_detail(request, craft_id):
+    categories = Category.objects.all()
+    location = Location.objects.all()
     technique = get_object_or_404(Technique, id=craft_id)
 
     try:
@@ -47,11 +49,14 @@ def craft_detail(request, craft_id):
     except Technique.DoesNotExist:
         previous = None
 
-    return render(request, 'lib/craft_detail.html', {'technique':technique, 'next':next_technique, 'previous':previous})
+    return render(request, 'lib/craft_detail.html', {'technique':technique, 'next':next_technique, 'previous':previous, 'categories':categories,'location':location})
 
 
 def about_me(request):
-    return render(request, 'lib/about_me.html')
+    categories = Category.objects.all()
+    location = Location.objects.all()
+
+    return render(request, 'lib/about_me.html', {'categories':categories,'location':location})
 
 
 def all_images(request):
@@ -65,9 +70,11 @@ def all_images(request):
 def image_by_location(request, location):
     # if request.method == "GET" and 'location_name' in request.GET and request.is_ajax():
     # location = request.GET['location_name']
+    categories = Category.objects.all()
+    location = Location.objects.all()
     images_location = Image.get_image_by_location(location)
 
-    return render_to_response('lib/location.html', {'images_location':images_location})
+    return render_to_response('lib/location.html', {'images_location':images_location, 'categories':categories,'location':location})
 
     # return redirect(all_images)
 
@@ -75,9 +82,11 @@ def image_by_location(request, location):
 def image_by_category(request, category):
     # if request.method == "GET" and 'category_name' in request.GET and request.is_ajax():
     #     category = request.GET['category_name']
+    categories = Category.objects.all()
+    location = Location.objects.all()
     images_category = Image.get_image_by_category(category)
 
-    return render_to_response('lib/category.html',{'images_category':images_category})
+    return render_to_response('lib/category.html',{'images_category':images_category, 'categories':categories,'location':location})
 
     # return redirect(all_images)
 
@@ -103,4 +112,4 @@ def search_image(request):
         return render(request,'lib/search.html',{'images_result':images_result,'message':message,'categories':categories,'location':location})
 
     else:
-        return render(request,'lib/search.html')
+        return render(request,'lib/search.html',{'categories':categories,'location':location})

@@ -17,16 +17,16 @@
         <div class="carousel-inner">
             <div class="item active">
                 <img src="{% static 'images/1.jpeg' %}" alt="First slide">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/2.jpeg' %}" alt="Second slide">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/3.jpeg' %}" alt="Third slide">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/4.jpeg' %}" alt="Fourth slide">
-                </div>
+            </div>
+            <div class="item">
+                <img src="{% static 'images/2.jpeg' %}" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="{% static 'images/3.jpeg' %}" alt="Third slide">
+            </div>
+            <div class="item">
+                <img src="{% static 'images/4.jpeg' %}" alt="Fourth slide">
+            </div>
         </div>
 
         <!-- Controls -->
@@ -62,17 +62,17 @@
     {% endif %} -->
 
     
-      <ul class="container-fluid">
+      <ul class="container-fluid ">
         {% for image in images %}
         <li class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
           <div class="img-Img">
   
-            <img src="{{ image.image_link.url }}" class="img-responsive myImg" alt="{{image.image_name}}">
+            <img src="{{ image.image_upload.cdn_url }}" class="img-responsive myImg" alt="{{image.image_name}}">
   
             <a id="see-me" href="{% url 'photoDetails' image_id=image.id %}">see me
               <span class="glyphicon glyphicon-eye-open"></span></a>
   
-            <button id='btn-copy' data-info="{{request.get_host }}{{ image.image_link.url}}" type="button" class="btn btn-info btn-xs">
+            <button id='btn-copy' data-info="{{request.get_host }}{{ image.image_upload.cdn_url}}" type="button" class="btn btn-info btn-xs">
               <span class="popuptext" id="myPopup">Copied!</span>
               <span class="glyphicon glyphicon-copy"></span>
               copy link
