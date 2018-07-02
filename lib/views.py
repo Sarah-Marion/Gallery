@@ -69,15 +69,18 @@ def all_images(request):
 
 def image_by_location(request, location):
     # if request.method == "GET" and 'location_name' in request.GET and request.is_ajax():
-    # location = request.GET['location_name']
-    categories = Category.objects.all()
-    location = Location.objects.all()
-    images_location = Image.get_image_by_location(location)
+    #     location = request.GET['location_name']
+    #     categories = Category.objects.all()
+    #     location = Location.objects.all()
+    #     images_location = Image.get_image_by_location(location)
 
-    return render_to_response('lib/location.html', {'images_location':images_location, 'categories':categories,'location':location})
+    #     return render_to_response('lib/location.html', {'images_location':images_location, 'categories':categories,'location':location})
 
     # return redirect(all_images)
-
+    images = Image.get_image_by_location(location)
+    categories = Category.objects.all()
+    location = Location.objects.all()
+    return render(request, 'lib/location.html', {'images_location':images, 'categories':categories,'location':location} )
 
 def image_by_category(request, category):
     # if request.method == "GET" and 'category_name' in request.GET and request.is_ajax():
